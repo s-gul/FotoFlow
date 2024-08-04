@@ -33,15 +33,13 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (localStorage.getItem('cookieFallBack') === '[]' 
-            //|| localStorage.getItem('cookieFallBack') === null
-            ){
-                // go back to sign in
-                navigate('/sign-in');
+        if (
+            localStorage.getItem('cookieFallBack') === '[]' ||
+            localStorage.getItem('cookieFallBack') === null
+        ) navigate('/sign-in');
 
-                // check auth
-                checkAuthUser();
-            }
+        // check auth
+        checkAuthUser();
     }, []);
 
     // needs to be called when the page reloads

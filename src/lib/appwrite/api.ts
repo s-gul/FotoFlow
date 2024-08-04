@@ -11,7 +11,7 @@ export async function createUserAccount(user:INewUser) {
         user.name
        )
 
-       if (!newAccount) throw error;
+       if (!newAccount) throw Error;
 
        const avatarUrl = avatars.getInitials(user.name);
 
@@ -44,16 +44,15 @@ export async function  saveUserToDB(user:{
             ID.unique(),
             user,
         )
-
         return newUser;
     } catch (error){
         console.log(error);
     }
 }
 
-export async function signInAccount(user: { email: string; password: string;}) {
+export async function signInAccount(user: {email: string; password: string;}) {
     try{
-        const session = await account.createSession(user.email, user.password);
+        const session = await account.createEmailPasswordSession(user.email, user.password);
 
         return session;
     } catch (error){
