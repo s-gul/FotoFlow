@@ -1,7 +1,6 @@
-import { ID, Query } from "appwrite";
+import { ID, Query, ImageGravity } from "appwrite";
 import { INewPost, INewUser, IUpdatePost } from "@/types";
 import { account, appwriteConfig, avatars, databases, storage } from "./config";
-import { error } from "console";
 
 export async function createPost(post: INewPost){
     try{
@@ -149,8 +148,8 @@ export async function getFilePreview(fileId: string){
             fileId,
             2000,
             2000,
-            "top",
-            100
+            ImageGravity.Top,
+            100,
         );
 
         if (!fileUrl) throw Error;
